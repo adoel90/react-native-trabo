@@ -28,6 +28,8 @@ Scenario: [Recent Order] - Berhasil informasi menampilkan order- order terbaru
     Then You move page to page of "Tab Manifest"
     And You get names of products
 
+Scenario: List Customer Info
+
 Scenario: [Check-in] - Berhasil memunculkan detail Check-in
     Given You click row product
     When clicked one row
