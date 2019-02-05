@@ -15,15 +15,20 @@ import { MonoText } from '../components/StyledText';
 
 export default class HomeDetailScreen extends React.Component {
 
-    static navigationOptions = {
-    
+  static navigationOptions = {
     title: 'User Detail'
-    
-    };
+  };
+
   render() {
+    const { navigation } = this.props;
+    const itemId = navigation.getParam('itemId', 'ID')
+    const otherParam = navigation.getParam('otherParam', 'Default value');
+
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Details Screen</Text>
+        <Text>Item Id : { JSON.stringify(itemId) }</Text>
+        <Text>otherParam: {JSON.stringify(otherParam)}</Text>
       </View>
     );
   }

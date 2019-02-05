@@ -18,6 +18,24 @@
 * http://www.reactnativeexpress.com/quick_start
 * http://www.reactnativeexpress.com/lifecycle_api
 
+
+# How do you debug react-native in Ubuntu 14.10 ?
+* Run this command to open developer menu - adb shell input keyevent 82
+* Sele*ct "Debug in chrome"
+* A new tab in chrome will be opened.
+* Right click, select Inspect Elements
+* Select Console tab.
+* Done
+
+
+# Emulator untuk React Native - Menggunakan HP Fisik Sebagai Emulator
+* https://www.petanikode.com/react-native-dasar/
+
+#Debugging with "Reactotron"
+* https://github.com/infinitered/reactotron
+* https://www.smoothterminal.com/articles/using-reactotron
+
+
 #
 
     {/* 
