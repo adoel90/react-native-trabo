@@ -1,17 +1,20 @@
 import React from 'react';
 import { createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
-import MainTabNavigator from './MainTabNavigator';
-import AppStack from './AppStack';
+import AppStack from './AppStack'; // App Stack is called by HeaderStack
+import DrawerStack from './DrawerStack';
+import HeaderStack from './HeaderStack';
 import AuthenticationStack from './AuthenticationStack';
 import AuthenticationLoaderScreen from '../screens/AuthenticationLoaderScreen';
 
 
 export default createAppContainer(createSwitchNavigator({
  
-    // Main: MainTabNavigator
-    App: AppStack,
+    // Apps: AppStack,
     Authentication: AuthenticationStack,
-    AuthLoader: AuthenticationLoaderScreen  
+    AuthLoader: AuthenticationLoaderScreen,
+    // Drawer: DrawerStack
+    Header: HeaderStack
+    // Main: MainTabNavigator
   },
   {
     initialRouteName: 'AuthLoader'

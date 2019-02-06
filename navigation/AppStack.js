@@ -1,20 +1,12 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { 
-    createStackNavigator, 
-    createBottomTabNavigator,
-    createMaterialTopTabNavigator
-} from 'react-navigation';
+import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 
-import HomeScreen from '../screens/HomeScreen';
 import HomeDetailScreen from '../screens/HomeDetailScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 
-// import HomeScreen from '../screens/HomeScreen';
 import BookingScreen from '../screens/BookingScreen';
 import ManifestScreen from '../screens/ManifestScreen';
 import ReportScreen from '../screens/ReportScreen';
-import LinkScreen from '../screens/LinksScreen';
 
 
 //Booking Stack
@@ -56,13 +48,14 @@ ReportStack.navigationOptions = {
 };
 
 
-
 // createTabNavigator || createBottomTabNavigator
-export default createMaterialTopTabNavigator({
-    BookingStack,
-    ManifestStack,
-    ReportStack,
-  }, {
+export default createMaterialTopTabNavigator(
+    {
+        BookingStack,
+        ManifestStack,
+        ReportStack,
+    }, 
+    {
       tabBarOptions:  {
         style: {
           backgroundColor: '#4855b7'
@@ -70,8 +63,11 @@ export default createMaterialTopTabNavigator({
         indicatorStyle: {
           backgroundColor: 'white'
         }
-      }
-     
-  });
+      },
+    //   initialLayout: {
+    //     height: '10'  
+    //   }
+    }
+  );
 
 

@@ -35,6 +35,25 @@
 * https://github.com/infinitered/reactotron
 * https://www.smoothterminal.com/articles/using-reactotron
 
+# Add Redux in React-Navigation
+* http://himarsh.org/build-react-native-app-with-redux-and-react-navigation/
+* https://reactnavigation.org/docs/en/redux-integration.html
+
+
+# Add Drawer
+* https://www.youtube.com/watch?v=213NhQ19_IE
+
+
+# Add Icon 
+* https://alligator.io/react/use-native-icons/
+*      https://www.reactnative.guide/12-svg-icons-using-react-native-vector-icons/12.1-creating-custom-iconset.html
+
+# Good React Native Element !
+* https://react-native-training.github.io
+
+# Expo help you build React Native App
+* https://docs.expo.io/versions/v32.0.0/
+
 
 #
 

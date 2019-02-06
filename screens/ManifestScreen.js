@@ -5,7 +5,6 @@ import {
   Button
 } from 'react-native';
 
-
 export default class ManifestScreen extends React.Component {
 
   static navigationOptions = {

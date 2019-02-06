@@ -2,8 +2,11 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
+// import { createStore, combineReducers, applyMiddleware } from 'redux'
+// import { Provider } from 'react-redux'
+
+// import { createStore, applyMiddleware } from 'redux';
+// import { Provider } from 'react-redux';
 
 import TraboApp from './navigation/TraboApp'
 // import AppNavigator from './navigation/AppNavigator';
