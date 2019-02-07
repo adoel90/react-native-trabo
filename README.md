@@ -35,6 +35,9 @@
 * https://github.com/infinitered/reactotron
 * https://www.smoothterminal.com/articles/using-reactotron
 
+#Debugging with "Expo, Device, Emulator"
+* https://docs.expo.io/versions/latest/workflow/debugging/
+
 # Add Redux in React-Navigation
 * http://himarsh.org/build-react-native-app-with-redux-and-react-navigation/
 * https://reactnavigation.org/docs/en/redux-integration.html
@@ -42,7 +45,6 @@
 
 # Add Drawer
 * https://www.youtube.com/watch?v=213NhQ19_IE
-
 
 # Add Icon 
 * https://alligator.io/react/use-native-icons/

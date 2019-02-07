@@ -11,8 +11,6 @@ export const addUser = (data) => ({
     data: data
 });
 
-
-///user/list?accessToken={accessToken}
 // export const getListUser = (accessToken) => ({
 export const getListUser = () => ({
     type: API_GET_USER_REQUEST,
