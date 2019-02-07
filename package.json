@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@expo/samples": "2.1.1",
+    "axios": "^0.18.0",
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
@@ -25,7 +26,8 @@
     "babel-preset-expo": "^5.0.0",
     "cucumber": "^5.1.0",
     "jest-expo": "^32.0.0",
-    "reactotron-react-native": "^2.1.5"
+    "reactotron-react-native": "^2.1.5",
+    "schedule": "^0.4.0"
   },
   "private": true
 }

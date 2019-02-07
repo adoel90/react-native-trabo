@@ -21,7 +21,7 @@
 
 # How do you debug react-native in Ubuntu 14.10 ?
 * Run this command to open developer menu - adb shell input keyevent 82
-* Sele*ct "Debug in chrome"
+* Select "Debug in chrome"
 * A new tab in chrome will be opened.
 * Right click, select Inspect Elements
 * Select Console tab.
@@ -47,6 +47,7 @@
 # Add Icon 
 * https://alligator.io/react/use-native-icons/
 *      https://www.reactnative.guide/12-svg-icons-using-react-native-vector-icons/12.1-creating-custom-iconset.html
+* https://material.io/tools/icons/?style=baseline
 
 # Good React Native Element !
 * https://react-native-training.github.io

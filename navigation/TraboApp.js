@@ -6,14 +6,12 @@ import HeaderStack from './HeaderStack';
 import AuthenticationStack from './AuthenticationStack';
 import AuthenticationLoaderScreen from '../screens/AuthenticationLoaderScreen';
 
-
 export default createAppContainer(createSwitchNavigator({
  
-    // Apps: AppStack,
-    Authentication: AuthenticationStack,
     AuthLoader: AuthenticationLoaderScreen,
-    // Drawer: DrawerStack
-    Header: HeaderStack
+    Authentication: AuthenticationStack,
+    Header: HeaderStack,
+    Drawer: DrawerStack
     // Main: MainTabNavigator
   },
   {

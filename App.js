@@ -1,21 +1,27 @@
 import React from 'react';
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+
+
+
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
-
-// import { createStore, combineReducers, applyMiddleware } from 'redux'
-// import { Provider } from 'react-redux'
-
-// import { createStore, applyMiddleware } from 'redux';
-// import { Provider } from 'react-redux';
-
-import TraboApp from './navigation/TraboApp'
-// import AppNavigator from './navigation/AppNavigator';
 
 if(__DEV__) {
   import('./ReactotronConfig.js').then(() => console.log('Reactotron Configured'))
 }
 
+import TraboApp from './navigation/TraboApp'
+
+import rootReducer from './reducers';
+import logMiddleware from './middleware/log';
+import userMiddleware from './middleware/user';
+// import AppNavigator from './navigation/AppNavigator';
+
+const store = createStore(rootReducer, applyMiddleware(logMiddleware, userMiddleware));
+
 export default class App extends React.Component {
+
   state = {
     isLoadingComplete: false,
   };
@@ -29,12 +35,15 @@ export default class App extends React.Component {
           onFinish={this._handleFinishLoading}
         />
       );
+      
     } else {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           {/* <AppNavigator /> */}
-          <TraboApp />
+          <Provider store={store}>
+            <TraboApp />
+          </Provider>
         </View>
       );
     }

@@ -1,13 +1,8 @@
-import React from 'react';
-import { Platform } from 'react-native';
 import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
-
 import HomeDetailScreen from '../screens/HomeDetailScreen';
-
 import BookingScreen from '../screens/BookingScreen';
 import ManifestScreen from '../screens/ManifestScreen';
 import ReportScreen from '../screens/ReportScreen';
-
 
 //Booking Stack
 const BookingStack = createStackNavigator(
@@ -63,10 +58,7 @@ export default createMaterialTopTabNavigator(
         indicatorStyle: {
           backgroundColor: 'white'
         }
-      },
-    //   initialLayout: {
-    //     height: '10'  
-    //   }
+      }
     }
   );
 

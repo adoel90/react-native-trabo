@@ -12,10 +12,14 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getListUser } from '../actions/user';
+
 import { MonoText } from '../components/StyledText';
 
 
-export default class BookingScreen extends React.Component {
+class BookingScreen extends React.Component {
 
   static navigationOptions = {
     // header: null,
@@ -28,8 +32,17 @@ export default class BookingScreen extends React.Component {
         title= "Log out"
       />
     ),
-    
   };
+
+  constructor(props){
+    super(props)
+  }
+
+  componentDidMount(){
+    const { action } = this.props;
+    action.getListUser();
+    // console.log(this.props);
+  }
 
   _showMoreApp = () => {
     this.props.navigation.navigate('Other');
@@ -103,3 +116,14 @@ export default class BookingScreen extends React.Component {
   };
 }
 
+const mapStateToProps = (state) => ({
+  login: state,
+  user: state.user
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  action: bindActionCreators({getListUser}, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookingScreen);
+// export default BookingScreen

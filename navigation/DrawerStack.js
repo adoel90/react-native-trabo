@@ -1,14 +1,45 @@
 
 import { createDrawerNavigator } from 'react-navigation';
 
-import MyDrawerHomeScreen from '../screens/MyDrawerHomeScreen';
-import MyDrawerNotificationsScreen from '../screens/MyDrawerNotificationsScreen';
+import MyDrawerHomeScreen from '../screens/MyDrawerNotificationsScreen';
+import MyDrawerNotificationsScreen from '../screens/MyDrawerHomeScreen';
+import HeaderStack from './HeaderStack';
 
-export default createDrawerNavigator({
-    Home: {
-        screen: MyDrawerHomeScreen,
+// createDrawerNavigator(RouteConfigs, DrawerNavigatorConfig) ==> https://reactnavigation.org/docs/en/drawer-navigator.html
+export default createDrawerNavigator(
+    
+    /* RouteConfigs */
+    {
+        Booking: {
+            screen: HeaderStack,
+        }   
     },
-    NotificationDrawer: {
-        screen: MyDrawerNotificationsScreen,
-    },
-});
+
+    /* DrawerNavigatorConfig */
+    // { Still empty...}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+/* Old Code */
+
+// export default createDrawerNavigator({
+//     Home: {
+//         screen: MyDrawerHomeScreen,
+//     },
+//     NotificationDrawer: {
+//         screen: MyDrawerNotificationsScreen,
+//     },
+// });
+
+
+

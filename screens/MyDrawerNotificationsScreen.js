@@ -1,13 +1,21 @@
-
 import React from 'react';
 import { Button, Image, StyleSheet, View} from 'react-native';
 
+
+const styles = StyleSheet.create({
+    icon: {
+      width: 24,
+      height: 24,
+    },
+  });
+  
+  
 class MyDrawerNotificationsScreen extends React.Component {
     static navigationOptions = {
-      drawerLabel: 'Notifications',
+      drawerLabel: 'Home',
       drawerIcon: ({ tintColor }) => (
         <Image
-          source={require('./images/notif.jpeg')}
+          source={require('./images/home.png')}
           style={[styles.icon, {tintColor: tintColor}]}
         />
       ),
@@ -16,22 +24,15 @@ class MyDrawerNotificationsScreen extends React.Component {
     render() {
       return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Button
-          onPress={() => this.props.navigation.goBack()}
-          title="Go back home"
-        />
+            <Button
+              onPress={() => this.props.navigation.navigate('NotificationDrawer')}
+              onPress={() => this.props.navigation.toggleDrawer()}
+              title="Go to notifications"
+            />
         </View>
       );
     }
   }
-  
-  const styles = StyleSheet.create({
-    icon: {
-      width: 24,
-      height: 24,
-    },
-  });
-  
 
 
-  export default MyDrawerNotificationsScreen;
+export default MyDrawerNotificationsScreen;
