@@ -68,6 +68,7 @@ class BookingScreen extends React.Component {
     };
 
     this.onDateChange = this.onDateChange.bind(this);
+    this._handleChangeOption = this._handleChangeOption.bind(this);
   }
 
 
@@ -81,6 +82,7 @@ class BookingScreen extends React.Component {
     const { login, product, availableCalendar } = this.props;
 
     if(prevProps.login != login){
+
     }
 
     if(prevProps.product != product){
@@ -126,6 +128,21 @@ class BookingScreen extends React.Component {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   }
 
+  //*Picker or Dropdownlist utilities
+  _handleChangeOption = (value) => {
+  
+    this.setState({
+      ...this.state,
+      selectedValueDropdownlist: value,
+    
+    }, () => {
+
+      const { action } = this.props;
+      console.log(this.state.selectedValueDropdownlist);
+      // action.getBookingCalendarAvailable(selectedValueDropdownlist)
+      // action.getBookingCalendarAvailable()
+    })
+  }
 
   render() {
 
@@ -140,28 +157,7 @@ class BookingScreen extends React.Component {
     }
 
 
-    //*Picker or Dropdownlist utilities
-    const _handleChangeOption = (value) => {
-  
-      const { selectedValueDropdownlist } = this.state;
-  
-      console.log(value);
-    
-      this.setState({
-        ...this.state,
-        selectedValueDropdownlist: value,
-      
-      }, () => {
-  
-        const { action } = this.props;
-        console.log("Okey !")
-        // console.log(this.state.selectedValueDropdownlist)
-  
-  
-        // action.getBookingCalendarAvailable(selectedValueDropdownlist)
-        action.getBookingCalendarAvailable()
-      })
-    }
+
 
     // const onDateChange = ({ date }) => {
     //   this.setState({ ...this.state, date });
@@ -182,52 +178,47 @@ class BookingScreen extends React.Component {
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <OpenSansText></OpenSansText>
 
-          {/** 
+           
             <TouchableOpacity onPress={this._toggleModal}>
-              <OpenSansTextSelectProduct>Select Product for availability</OpenSansTextSelectProduct>
+              <OpenSansTextSelectProduct>{selectedValueDropdownlist != null ? selectedValueDropdownlist.name : "Select Product for availability"}</OpenSansTextSelectProduct>
             </TouchableOpacity>
 
-          */}
+            {/* Modal React Native Modal  */}
+            <Modal 
+              animationIn="slideInUp"
+              isVisible={this.state.isModalVisible} 
+              style={styles.modalContent}>
+              
+                <View><Text>Hai !</Text></View>
           
+              <View style={{ flex: 1 }}>
+                <FlatList
+                  data={product.length != null ? product : loading }
+                
+                  
+                  renderItem={({item, separators}) => (
+                    <TouchableOpacity
+                      onPress={this._handleChangeOption(item)}
+                      onShowUnderlay={separators.highlight}
+                      onHideUnderlay={separators.unhighlight}>
+    
+                      <View style={{backgroundColor: 'white'}} >
+                        <OpenSansTextPicker key={item.code}>{item.name}</OpenSansTextPicker>
+                      </View>
+                    </TouchableOpacity>
+                  )}
+                />
+      
+                <TouchableOpacity onPress={this._toggleModal}>
+                  <Text>Close</Text>
+                </TouchableOpacity>
+              </View>
+
+              
+            </Modal>
         
 
-          {/* Modal React Native Modal 
-
-          <Modal 
-            animationIn="slideInUp"
-            isVisible={this.state.isModalVisible} 
-            style={styles.modalContent}>
-            
-              <View><Text>Hai !</Text></View>
-         
-            <View style={{ flex: 1 }}>
-              <FlatList
-                data={product.length != null ? product : loading }
-               
-                
-                renderItem={({item, separators}) => (
-                  <TouchableOpacity
-                    onPress={this._handleChangeOption(item)}
-                    onShowUnderlay={separators.highlight}
-                    onHideUnderlay={separators.unhighlight}>
-  
-                    <View style={{backgroundColor: 'white'}} >
-                      <OpenSansTextPicker key={item.code}>{item.name}</OpenSansTextPicker>
-                    </View>
-                  </TouchableOpacity>
-                )}
-              />
-    
-              <TouchableOpacity onPress={this._toggleModal}>
-                <Text>Close</Text>
-              </TouchableOpacity>
-            </View>
-
-            
-          </Modal>
-         */}
-
-          
+          {/* 
           <Picker
             selectedValue={selectedValueDropdownlist }
             style={styles.dropdownlist}
@@ -249,6 +240,8 @@ class BookingScreen extends React.Component {
                 // }) : renderDefaultValueDropdownlist()
               }
           </Picker>
+
+          */}
 
           
           <BorderBottomView></BorderBottomView>
