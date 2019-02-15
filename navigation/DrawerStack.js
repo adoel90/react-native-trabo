@@ -11,7 +11,7 @@ export default createDrawerNavigator(
     /* RouteConfigs */
     {
         Booking: {
-            screen: HeaderStack,
+            screen: HeaderStack
         }   
     },
 

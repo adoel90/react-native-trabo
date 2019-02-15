@@ -5,6 +5,8 @@ Scenario: Berhasil Login
     When click button Login
     Then You get launcher like loader spinner 
     And You get landing page "Booking"
+    And You get component "Dropdown list" in page "Booking"
+    And You can pick "Product Name"  
 
 
 Scenario: Gagal Login

@@ -1,4 +1,6 @@
+
 Feature: Landing Page Booking ?
+
     Date-picker memiliki feature Active/ Non-Active days,
     Recent Order memiliki feature menampilkan order- order terbaru,
     Check-in memimiliki feature menampilkan detail of check-in customer
@@ -15,7 +17,6 @@ Scenario: Berhasil tampil component Date-picker
     When load/ inisiate page
     Then You get feature Date-picker
 
-
 Scenario: [Recent Order] - Berhasil muncul "Recent Orders" beserta button "See More"
     Given You are You are inside Landing Page - Booking
     When load/ inisiate page
@@ -30,7 +31,26 @@ Scenario: [Recent Order] - Berhasil informasi menampilkan order- order terbaru
 
 Scenario: List Customer Info
 
-Scenario: [Check-in] - Berhasil memunculkan detail Check-in
+Scenario: [Check-in]s - Berhasil memunculkan detail Check-in
     Given You click row product
     When clicked one row
     Then You move to page Check-in detail
+
+Scenario: [Component Dropdownlist] Berhasil memunculkan product 
+    Given You click "Silahkan pilih :"
+    When clicked
+    Then You see list product available
+
+#In here gw pake "TokenTest", in future ganti pake "getStorage()" Dul !!!
+Scenario: [Component Dropdownlist - Technical] berhasil Date Picker sesuai dengan "Product Code" yang di pilih
+    Given You choose product 
+    When choosed
+    Then Apps is appearing sales date available
+
+Scenario: Berhasil menampilkan "New Booking - Fill"
+    Given You clicked Button "Available" atau "Overbooking"
+    
+
+
+
+

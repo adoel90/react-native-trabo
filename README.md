@@ -8,6 +8,14 @@
 
 # Url login Partner Trabo : 
 * http://partner.trabo.co/login
+* https://partner.trabo.co/dashboard
+
+# Url contoh Date-picker Iframe
+* https://limitless-cove-20609.herokuapp.com/popo11
+
+#Username Login Trabo App
+*wisatamusi@gmail.com
+*trabo2019
 
 
 #Alhamdulillah ada "Playround React Native"
@@ -37,11 +45,14 @@
 
 #Debugging with "Expo, Device, Emulator"
 * https://docs.expo.io/versions/latest/workflow/debugging/
+* https://github.com/infinitered/reactotron/blob/master/docs/plugin-redux-saga.md
 
 # Add Redux in React-Navigation
 * http://himarsh.org/build-react-native-app-with-redux-and-react-navigation/
 * https://reactnavigation.org/docs/en/redux-integration.html
 
+# Add Dropdown LIst
+* https://github.com/n4kz/react-native-material-dropdown
 
 # Add Drawer
 * https://www.youtube.com/watch?v=213NhQ19_IE
@@ -51,12 +62,33 @@
 *      https://www.reactnative.guide/12-svg-icons-using-react-native-vector-icons/12.1-creating-custom-iconset.html
 * https://material.io/tools/icons/?style=baseline
 
+
+# Add Responsive in React Native
+* https://github.com/rundmt/react-native-flexbox-grid
+
+
+# Add styled component
+* https://www.styled-components.com/docs/basics
+
 # Good React Native Element !
 * https://react-native-training.github.io
 
 # Expo help you build React Native App
 * https://docs.expo.io/versions/v32.0.0/
 
+# Example "Date Picker Component"
+* https://web.trabo.co/product-detail/A-09231721/popo11
+* https://www.npmjs.com/package/react-native-dates
+* https://github.com/ivanchenko/react-native-day-picker
+* https://momentjscom.readthedocs.io/en/latest/moment/01-parsing/12-moment-clone/
+* https://github.com/stephy/CalendarPicker
+
+
+# API Google Calendar based on Holiday Calendar in Indonesia
+* https://www.googleapis.com/calendar/v3/calendars/en.indonesian%23holiday%40group.v.calendar.google.com/events?key=AIzaSyDiaLvDNpNZVX6Vw6QHLqLhYOqgQPeEIsE
+
+# Good Article 
+* https://jcemer.com/types-in-javascript-what-you-should-care.html ==> TENTANG Type in Javascript
 
 #
 

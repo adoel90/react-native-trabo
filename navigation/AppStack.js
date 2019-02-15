@@ -5,19 +5,19 @@ import ManifestScreen from '../screens/ManifestScreen';
 import ReportScreen from '../screens/ReportScreen';
 
 //Booking Stack
-const BookingStack = createStackNavigator(
-    {
-        Home: BookingScreen,
-        Detail: HomeDetailScreen
-    },
-    {
-        initialRouteName: "Home"
-    }
-);
+// const BookingStack = createStackNavigator(
+//     {
+//         Home: BookingScreen,
+//         Detail: HomeDetailScreen
+//     },
+//     {
+//         initialRouteName: "Home"
+//     }
+// );
   
-BookingStack.navigationOptions = {
-    tabBarLabel: 'Booking'
-};
+// BookingStack.navigationOptions = {
+//     tabBarLabel: 'Booking'
+// };
 
 //Manifest Stack
 const ManifestStack = createStackNavigator(
@@ -30,7 +30,6 @@ ManifestStack.navigationOptions = {
     tabBarLabel: 'Manifest'
 };
 
-
 //Report Stack
 const ReportStack = createStackNavigator(
     {
@@ -42,11 +41,11 @@ ReportStack.navigationOptions = {
     tabBarLabel: 'Report'
 };
 
-
 // createTabNavigator || createBottomTabNavigator
 export default createMaterialTopTabNavigator(
     {
-        BookingStack,
+        // BookingStack
+        BookingScreen,
         ManifestStack,
         ReportStack,
     }, 
@@ -57,7 +56,9 @@ export default createMaterialTopTabNavigator(
         },
         indicatorStyle: {
           backgroundColor: 'white'
-        }
+        },
+        upperCaseLabel: false,
+        labelStyle: {fontFamily:'openSansMedium'},
       }
     }
   );

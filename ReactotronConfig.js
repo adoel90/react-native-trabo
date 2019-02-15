@@ -9,8 +9,11 @@
 //   .connect() // let's connect!
 
 import Reactotron from 'reactotron-react-native'
+import { reactotronRedux } from 'reactotron-redux'
+import sagaPlugin from 'reactotron-redux-saga'
 
-Reactotron
+// Reactotron
+const reactotron = Reactotron
   .configure({
     name: "Trabo App",
     host: '192.168.43.91'
@@ -24,4 +27,8 @@ Reactotron
     errors: { veto: (stackFrame) => false }, // or turn it off with false
     overlay: false, // just turning off overlay
   })
+    .use(reactotronRedux())
+    .use(sagaPlugin())
   .connect();
+
+  export default reactotron

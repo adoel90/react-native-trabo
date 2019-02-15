@@ -15,18 +15,31 @@
     "@expo/samples": "2.1.1",
     "axios": "^0.18.0",
     "expo": "^32.0.0",
+    "moment": "^2.24.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-calendar-picker": "^5.22.0",
+    "react-native-dates": "^2.0.4",
+    "react-native-day-picker": "^1.2.1",
+    "react-native-dropdown-menu": "^2.0.0",
+    "react-native-flexbox-grid": "^0.3.2",
+    "react-native-material-dropdown": "^0.11.1",
+    "react-native-material-ui": "^1.30.1",
+    "react-native-modal": "^7.0.2",
     "react-native-vector-icons": "^6.2.0",
     "react-navigation": "^3.0.9",
     "react-redux": "^6.0.0",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.1",
+    "styled-components": "^4.1.3"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
     "cucumber": "^5.1.0",
     "jest-expo": "^32.0.0",
     "reactotron-react-native": "^2.1.5",
+    "reactotron-redux": "^2.1.3",
+    "reactotron-redux-saga": "^4.0.0",
     "schedule": "^0.4.0"
   },
   "private": true
