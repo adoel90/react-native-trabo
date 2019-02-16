@@ -21,7 +21,9 @@ import CalendarPicker from 'react-native-calendar-picker';
 
 import { LinearGradient } from 'expo';
 import {Column as Col, Row} from 'react-native-flexbox-grid';
-import styled from 'styled-components/native'
+import styled, {ThemeProvider} from 'styled-components/native'
+
+
 import Modal from "react-native-modal";
 import { Dialog, DialogDefaultActions } from 'react-native-material-ui';
 
@@ -60,11 +62,13 @@ class BookingScreen extends React.Component {
       endDate: null,
       productList:{},
       selectedValueDropdownlist: {},
+      isSelectedValueDrProduct: false,
       isClickDropdown: false,
       isModalVisible: false,
       checked: false,
       dateListAvailable: {},
       selectedStartDate: null,
+      
     };
 
     this.onDateChange = this.onDateChange.bind(this);
@@ -107,7 +111,9 @@ class BookingScreen extends React.Component {
     this.setState({
       selectedStartDate: date,
     }, () => {
+      const { selectedStartDate } = this.state;
       // this.props.navigation.navigate('Authentication');
+      this.props.navigation.navigate('InsideBooking', {data: selectedStartDate })
     });
   }
 
@@ -134,6 +140,7 @@ class BookingScreen extends React.Component {
     this.setState({
       ...this.state,
       selectedValueDropdownlist: value,
+      isSelectedValueDrProduct: true
     
     }, () => {
 
@@ -147,7 +154,7 @@ class BookingScreen extends React.Component {
   render() {
 
     const { action, availableCalendar, product} = this.props;
-    const { selectedValueDropdownlist, isClickDropdown, dateListAvailable, selectedStartDate} = this.state;
+    const { selectedValueDropdownlist, isClickDropdown, dateListAvailable, selectedStartDate, isSelectedValueDrProduct} = this.state;
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
 
     //*Native Date Utilities
@@ -155,9 +162,6 @@ class BookingScreen extends React.Component {
       date = moment('2019-02-20').isBefore(moment('2019-02-28'), 'day');
       
     }
-
-
-
 
     // const onDateChange = ({ date }) => {
     //   this.setState({ ...this.state, date });
@@ -173,14 +177,12 @@ class BookingScreen extends React.Component {
     
     return (
       <View style={styles.container}>   
-
      
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <OpenSansText></OpenSansText>
 
-           
             <TouchableOpacity onPress={this._toggleModal}>
-              <OpenSansTextSelectProduct>{selectedValueDropdownlist != null ? selectedValueDropdownlist.name : "Select Product for availability"}</OpenSansTextSelectProduct>
+              <OpenSansTextSelectProduct>{isSelectedValueDrProduct == true ? selectedValueDropdownlist.name : "Select Product for availability"}</OpenSansTextSelectProduct>
             </TouchableOpacity>
 
             {/* Modal React Native Modal  */}
@@ -189,8 +191,6 @@ class BookingScreen extends React.Component {
               isVisible={this.state.isModalVisible} 
               style={styles.modalContent}>
               
-                <View><Text>Hai !</Text></View>
-          
               <View style={{ flex: 1 }}>
                 <FlatList
                   data={product.length != null ? product : loading }
@@ -213,52 +213,48 @@ class BookingScreen extends React.Component {
                   <Text>Close</Text>
                 </TouchableOpacity>
               </View>
-
-              
             </Modal>
         
 
           {/* 
-          <Picker
-            selectedValue={selectedValueDropdownlist }
-            style={styles.dropdownlist}
-            // itemStyle={{fontFamily:'open-sans-medium'}} Only working on iOS
-            onValueChange={_handleChangeOption}
-            textStyle={{fontFamily:'openSansMedium'}}
-          >
-           
-            {
-              product.length != null ? product.map((data, i) => {
-                return(
-                  <Picker.Item                 
-                    key={i} 
-                    label={data.name} 
-                    value={data.code} />
-                  )
-                }) : null 
-                // "Custom Font Picker using Android" ==> https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
-                // }) : renderDefaultValueDropdownlist()
-              }
-          </Picker>
-
+            <Picker
+                selectedValue={selectedValueDropdownlist }
+                style={styles.dropdownlist}
+                // itemStyle={{fontFamily:'open-sans-medium'}} Only working on iOS
+                onValueChange={_handleChangeOption}
+                textStyle={{fontFamily:'openSansMedium'}}
+              >
+              
+                {
+                  product.length != null ? product.map((data, i) => {
+                    return(
+                      <Picker.Item                 
+                        key={i} 
+                        label={data.name} 
+                        value={data.code} />
+                      )
+                    }) : null 
+                    // "Custom Font Picker using Android" ==> https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
+                    // }) : renderDefaultValueDropdownlist()
+                  }
+              </Picker>
           */}
 
           
           <BorderBottomView></BorderBottomView>
             {/*  
-          <Dates
-            onDatesChange={onDatesChange}
-            isDateBlocked={isDateBlocked}
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            focusedInput={this.state.focus}
-            range
-          />
+            <Dates
+              onDatesChange={onDatesChange}
+              isDateBlocked={isDateBlocked}
+              startDate={this.state.startDate}
+              endDate={this.state.endDate}
+              focusedInput={this.state.focus}
+              range
+            />
 
-            <View>
-            <Text>SELECTED DATE:{ startDate }</Text>
-          </View>
-
+              <View>
+              <Text>SELECTED DATE:{ startDate }</Text>
+            </View>
           */}
 
           <CalendarPicker
@@ -266,8 +262,8 @@ class BookingScreen extends React.Component {
             selectedStartDate={new Date(2019, 6, 3)}
             selectedEndDate={end}
             selectedDayColor="grey"
-            minDate={new Date (2019,1, 1)}
-            maxDate={new Date(2019, 1, 16)}
+            minDate={isSelectedValueDrProduct == true  ? new Date (2019,1, 15) : null}
+            maxDate={isSelectedValueDrProduct == true  ? new Date(2019, 1, 28) : null }
             selectedDayStyle={{backgroundColor:'orange'}}
             // allowRangeSelection={true}
             textStyle={{fontFamily:'openSansMedium'}}
@@ -275,11 +271,7 @@ class BookingScreen extends React.Component {
             nextTitle=">"
           />
 
-        
-
-          
-          
-          <RecentOrderStyleView>  
+          <RecentOrderSeeMoreView>  
             <Row size={12}>
               <Col sm={6} md={4} lg={3}>
                 <OpenSansTextRecentOrder>Recent Order</OpenSansTextRecentOrder>
@@ -288,47 +280,85 @@ class BookingScreen extends React.Component {
                 <OpenSansTextSeeMore>SEE MORE</OpenSansTextSeeMore>
               </Col>
             </Row>   
-          </RecentOrderStyleView> 
-          {/*
-            https://docs.expo.io/versions/latest/sdk/linear-gradient/ 
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            
+          </RecentOrderSeeMoreView> 
 
-              <LinearGradient
-                colors={['#7D6FE3', '#3121A9']}
-                start={[1,1]}//Top & Left; 10% & 10%
-                //end={[1,1]}//Bottom & Right; 10% & 10%
-                style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
-                <Text
-                  style={{
-                    backgroundColor: 'transparent',
-                    fontSize: 15,
-                    color: '#fff',
-                  }}>
-                  Sign in with Facebook
-                </Text>
-              </LinearGradient>
-            </View>
-           */}
+          <RecentOrderListView>
+            <Row size={12}>
+              <Col sm={3}><OpenSansTypography value="Paid" fontSize="12px" /></Col>
+              <Col sm={7}><OpenSansTypography value="Yoga Class in Singaraja" fontSize="13px" /></Col>
+              <Col sm={2}><OpenSansTypography value="20 Aug" fontSize="13px" /></Col>
+            </Row>
+            <Row size={12}>
+              <Col sm={10}><OpenSansTypography value="Winsen Tandra" fontSize="12px" /></Col>
+              <Col sm={2}><OpenSansTypography value="Just now" fontSize="12px" /></Col>
+            </Row>
+            <Row>
+              <Col sm={7}><OpenSansTypography value="3 Pax" fontSize="12px" /></Col>
+              <Col sm={5}><OpenSansTypography value="56713178-02-01-2019" fontSize="12px" /></Col>
+            </Row>
+          </RecentOrderListView>
         </ScrollView>
-
         {this.state.date && <Text style={styles.date}>{this.state.date && this.state.date.format('LL')}</Text>}
         <Text style={[styles.date, this.state.focus === 'startDate' && styles.focused]}>{this.state.startDate && this.state.startDate.format('LL')}</Text>
         <Text style={[styles.date, this.state.focus === 'endDate' && styles.focused]}>{this.state.endDate && this.state.endDate.format('LL')}</Text>
       </View>
-
-
-    
     );
   }
 }
 
 
-const RecentOrderStyleView = styled.View`
+
+export const OpenSansTypography = ({value, fontSize, color, textAlign}) => (
+
+  <TextElement
+    fontSize={fontSize}
+    color={color} 
+    // textAlign={textAlign}
+    // fontWeight={fontWeight}
+    // 'font-weight': true,
+    //color=`#1ea0b1`
+    //color=#ababab
+  >
+    {value}
+  </TextElement>
+)
+
+export const theme= {
+  main: "#1ea0b1"
+}
+
+const TextElement = styled.Text`
+  font-family: 'openSansMedium';
+  font-size: ${props => props.fontSize};
+ 
+  
+`
+// color: ${props => props.theme.main}; 
+//color: ${props => props.paid ? props.theme.paid : props.theme.pending }
+//color: ${props => props.paid == "paid" ? props.theme.paid : null }
+// text-align: ${props => props.textAlign}
+
+// color: ${props => props.color }
+// font-weight: ${props => props.fontWeight}
+
+
+// TextElement.defaultProps = {
+//   theme: {
+//     paid: "#1ea0b1",
+//     pending: "#ababab"
+//   }
+// }
+
+
+
+const RecentOrderListView = styled.View`
+  background: transparent;
+  padding: 22px;
+`
+const RecentOrderSeeMoreView = styled.View`
   background: #e6eaed;
   padding: 20px;
 `
-
 const OpenSansTextRecentOrder = styled.Text`
     font-family: 'openSansMedium';
     font-size: 12px;
@@ -343,8 +373,6 @@ const OpenSansTextSeeMore = styled.Text`
 const OpenSansTextPicker = styled.Text`
     font-family: 'openSansMedium';
     font-size: 17px;
- 
-
 `
 const OpenSansTextSelectProduct = styled.Text`
   font-family: 'openSansMedium';
@@ -414,3 +442,26 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookingScreen);
+
+
+   {/*
+      https://docs.expo.io/versions/latest/sdk/linear-gradient/ 
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      
+
+        <LinearGradient
+          colors={['#7D6FE3', '#3121A9']}
+          start={[1,1]}//Top & Left; 10% & 10%
+          //end={[1,1]}//Bottom & Right; 10% & 10%
+          style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
+          <Text
+            style={{
+              backgroundColor: 'transparent',
+              fontSize: 15,
+              color: '#fff',
+            }}>
+            Sign in with Facebook
+          </Text>
+        </LinearGradient>
+      </View>
+      */}

@@ -41,13 +41,14 @@ ReportStack.navigationOptions = {
     tabBarLabel: 'Report'
 };
 
-// createTabNavigator || createBottomTabNavigator
+//* Component View Tabs "Booking", "Manifest", "Report"
 export default createMaterialTopTabNavigator(
     {
         // BookingStack
         BookingScreen,
         ManifestStack,
         ReportStack,
+        
     }, 
     {
       tabBarOptions:  {

@@ -5,11 +5,18 @@ Feature: Landing Page Booking ?
     Recent Order memiliki feature menampilkan order- order terbaru,
     Check-in memimiliki feature menampilkan detail of check-in customer
 
+    Recent Order status "paid" berwarna : #1ea0b1
+    Recent Order status "Deposit" berwarna : #f5a623
 
 Scenario: Berhasil tampil component Date-picker 
     Given You are inside Landing Page - Booking
     When load/ inisiate page
     Then You get feature Date-picker
+
+Scenario: Berhasil redirect ke page  "Sales Calendar - Results"
+    Given After choosed product, then appear date available, and you choose one of date available
+    When clicked 
+    Then move to "Sales Calendar - Results"
 
 
 Scenario: Berhasil tampil component Date-picker 
@@ -24,6 +31,7 @@ Scenario: [Recent Order] - Berhasil muncul "Recent Orders" beserta button "See M
     And You get "3" list 
 
 Scenario: [Recent Order] - Berhasil informasi menampilkan order- order terbaru 
+
     Given You click button "See More"
     When clicked button "See More"
     Then You move page to page of "Tab Manifest"

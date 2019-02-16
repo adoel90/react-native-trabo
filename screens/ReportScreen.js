@@ -2,9 +2,12 @@ import React from 'react';
 import {
   Text,
   View,
-  Button
+  Button,
+  TouchableHighlight,
+  StyleSheet
 } from 'react-native';
 
+import { Toolbar } from 'react-native-material-ui';
 
 export default class ReportScreen extends React.Component {
 
@@ -15,11 +18,38 @@ export default class ReportScreen extends React.Component {
 
   render() {
     return (
+      <View style={styles.container}>   
 
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Report</Text>
+
+        {/* 
+        <Toolbar
+          leftElement="menu"
+          centerElement="Searchable"
+          searchable={{
+            autoFocus: true,
+            placeholder: 'Search',
+          }}
+          rightElement={{
+              menu: {
+                  icon: "more-vert",
+                  labels: ["item 1", "item 2"]
+              }
+          }}
+          onRightElementPress={ (label) => { console.log(label) }}
+        />
+
+        */}
       </View>
+
+     
     );
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexGrow: 1,
+    marginTop: 0,
+  }
+});

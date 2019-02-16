@@ -2,37 +2,12 @@ import React from 'react';
 import { Platform, Alert, TouchableHighlight} from 'react-native';
 import { createStackNavigator, DrawerActions } from 'react-navigation';
 import {Text, View, StyleSheet} from 'react-native';
+import BookingDetailScreen from '../screens/BookingDateDetailScreen'
 
 import { LinearGradient } from 'expo';
 
 import TabBarIcon from '../components/TabBarIcon';
 import AppStack from './AppStack';
-
-const GradientHeader = props => (
-        <View style={{ backgroundColor: '#eee' }}>
-            <LinearGradient
-                colors={['#7D6FE3', '#3121A9']}
-                start={[1,1]}//Top & Left; 10% & 10%
-                //end={[1,1]}//Bottom & Right; 10% & 10%
-            >
-
-            </LinearGradient>
-        </View>
-)
-
-      {/* 
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    https://docs.expo.io/versions/latest/sdk/linear-gradient/
-
-    <LinearGradient
-      colors={['#7D6FE3', '#3121A9']}
-      start={[1,1]}//Top & Left; 10% & 10%
-      //end={[1,1]}//Bottom & Right; 10% & 10%
-    </LinearGradient>
-  </View>
-   */}
-
-
 
 export default createStackNavigator (
 
@@ -62,17 +37,6 @@ export default createStackNavigator (
                                     : 'md-menu'
                                 }
                             />
-                            
-
-
-
-
-
-
-
-
-
-
                           
                         </TouchableHighlight>
                     ),
@@ -87,18 +51,40 @@ export default createStackNavigator (
                    
                 }   
             }
-          
-
-
         },
+        InsideBooking: {
+            screen: BookingDetailScreen
+        }
     },
 
     //* StackNavigatorConfig
     // { Waiting to explore here... }
-
-   
-  
   )
+
+const GradientHeader = props => (
+    <View style={{ backgroundColor: '#eee' }}>
+        <LinearGradient
+            colors={['#7D6FE3', '#3121A9']}
+            start={[1,1]}//Top & Left; 10% & 10%
+            //end={[1,1]}//Bottom & Right; 10% & 10%
+        >
+
+        </LinearGradient>
+    </View>
+)
+
+  {/* 
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    https://docs.expo.io/versions/latest/sdk/linear-gradient/
+
+    <LinearGradient
+    colors={['#7D6FE3', '#3121A9']}
+    start={[1,1]}//Top & Left; 10% & 10%
+    //end={[1,1]}//Bottom & Right; 10% & 10%
+    </LinearGradient>
+    </View>
+*/}
+
 
 
 

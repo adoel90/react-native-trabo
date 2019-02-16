@@ -21,15 +21,6 @@ export default createDrawerNavigator(
 
 
 
-
-
-
-
-
-
-
-
-
 /* Old Code */
 
 // export default createDrawerNavigator({
